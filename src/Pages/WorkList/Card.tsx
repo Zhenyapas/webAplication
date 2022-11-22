@@ -1,38 +1,38 @@
 import StarRating from '../../components/StarRating';
 import {ReactComponent as Marker} from '../../img/marker.svg'
-import { IUser } from '../../models/models';
+import { ICard } from '../../models/models';
 import {useState,useEffect} from 'react';
-import axios from 'axios';
+import getCountryCoordinates from '../../axios/getCountryCoordinates';
+import { dateInfo } from '../../functions/dateInfo';
 
-interface ICard {
-  user: IUser
-  key:string
-}
 
-interface IAdress{
-    "compound_code" : string;
-}
-interface ILocationResponse {
-    'plus_code': IAdress
-}
-     const func = async (func:Function,x:number,y:number) => {
-        const res = await axios.get<ILocationResponse>(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${x},${y}&language=en&key=AIzaSyAQ_EbCAnxy2fLyqH7UH6Ixjdz0TRrkEQ8`);
-        const adress = res.data.plus_code.compound_code;
-        func(adress);
-      }
+
+
+
+
 const Card = ({user}:ICard) => {
 
 
-    const {title,name,location} = user;
+    const {title,name,location,pictures,updatedAt,createdAt} = user;
 
     const x = location.lat;
     const y = location.long
 
+    const avatar = pictures[0];
+
+    const date = (updatedAt) ? updatedAt : createdAt;
+
+    
+
+    
+
     const [country,setCountry] = useState('Loading...')
+    const [today, setToday] = useState('Loading...')
 
    useEffect( () => {
-    func(setCountry,x,y);
-    console.log(country);
+    getCountryCoordinates(setCountry,x,y);
+    setToday(dateInfo(date));
+    
    } ,[country])
 
 
@@ -46,7 +46,7 @@ const Card = ({user}:ICard) => {
 
         <div className='px-4 lg:px-6 flex justify-center'>
             <div className=' mt-[45px] lg:mt-[24px] rounded-[50%] overflow-hidden w-[66px] h-[66px] lg:w-[88px] lg:h-[88px] bg-orange-500'>
-               <img></img>
+               <img className='w-[66px] relative  lg:w-[88px]' src={avatar}></img>
             </div>
         </div>
 
@@ -57,7 +57,7 @@ const Card = ({user}:ICard) => {
                 <StarRating />
 
                 <div className='grow flex justify-end items-center'>
-                    <div className='font-proximaThin text-sm text-[#878D9D] tracking-[0.21px] leading-4  '>Posted 2 days ago</div>
+                    <div className='font-proximaThin text-sm text-[#878D9D] tracking-[0.21px] leading-4  '>{today}</div>
                 </div>
 
             </div>

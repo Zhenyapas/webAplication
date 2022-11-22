@@ -7,19 +7,6 @@ export const getUsers = {
     method: 'GET',
     url: 'https://api.json-generator.com/templates/ZM1r0eic3XEy/data',
     headers: { Authorization: ` Bearer ${token} `}
-    };
-  
-
-export const usersApi = {
-
-     getUsers() {
-        
-        return axios.request(getUsers);
-
-    }
-
-
-}
- 
+};
 
 

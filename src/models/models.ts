@@ -27,3 +27,9 @@ export interface ServerResponse<T> {
     config: Object,
     request:XMLHttpRequest,
 }
+
+export interface ICard {
+    user: IUser
+    key:string
+}
+  
