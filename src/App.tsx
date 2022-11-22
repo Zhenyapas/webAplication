@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import { useAppDispatch, useAppSelector } from './hooks/redux';
+import WorkList from './Pages/WorkList/WorkList';
+
 import { fetchUsers } from './Store/actions/userActions';
 
 
@@ -21,12 +23,19 @@ function App() {
      dispatch(fetchUsers());
      },[]);
 
-     /* if(loading) return <div className='bg-yellow-400'>Loading...</div> ; */
+     if(loading) return <div className='bg-yellow-400'>Loading...</div> ;
 
-  return (
+ return (
 
-    
-         <div>hello world!</div>
+        <div className='App'>
+
+        
+            
+        <WorkList />
+
+      
+
+        </div>
     
 
   );

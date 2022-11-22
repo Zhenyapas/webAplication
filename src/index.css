@@ -1,4 +1,8 @@
-layer base {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
   @font-face {
     font-family: 'ProximaNova' ;
     font-weight:700;
@@ -16,5 +20,31 @@ layer base {
     font-weight:400;
     src: url(../public/fonts/ProximaNova-Light.woff) format('woff'),
     url(../public/fonts/ProximaNova-Light.woff2) format('woff2');
+  }
+
+  .list {
+    font-weight: 400;
+    font-size: 1.125rem;
+    letter-spacing: -0.56px;
+    color:rgba(56, 65, 93, 0.82);
+  }
+    .list li:before {
+      content: '';
+      margin-right: 1rem;
+      margin-bottom: 2px;
+      width: 9px; /* same as padding-left set on li */
+      height: 9px;
+      background-color:rgba(56, 69, 100, 0.6326);
+      display:inline-block;
+    }
+  
+}
+
+@layer components {
+  .container {
+      @apply max-w-[1256px];
+  }
+  .pcMap{
+    @apply relative bottom-[275px] left-[15px] z-20 max-w-[244px];
   }
 }

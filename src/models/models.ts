@@ -7,7 +7,7 @@ export interface IUser {
     salary: string,
     address: string,
     benefits: Array<string>,
-    location: Object
+    location: ILatLong
     pictures: Array<string>,
     createdAt: string,
     updatedAt: string,
@@ -15,7 +15,10 @@ export interface IUser {
     employment_type: Array<string>
 
 }
-
+export interface ILatLong {
+    lat: number,
+    long: number,
+}
 export interface ServerResponse<T> {
     data: T[], 
     status: number,
