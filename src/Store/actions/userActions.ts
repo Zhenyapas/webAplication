@@ -22,3 +22,13 @@ export const fetchUsers = () => {
         }
     }
  }
+export const folowUser = (id:string) => {
+    return (dispatch:AppDispatch) => {
+        dispatch(userSlice.actions.folowUser(id))
+    }
+}
+export const unfolowUser = (id:string) => {
+    return (dispatch:AppDispatch) => {
+        dispatch(userSlice.actions.folowUser(id))
+    }
+}

@@ -47,4 +47,7 @@
   .pcMap{
     @apply relative bottom-[275px] left-[15px] z-20 max-w-[244px];
   }
+  .pined {
+    @apply w-[16px] fill-[#70778B] relative bottom-[120px] right-[40px] hover:cursor-pointer ;
+  }
 }

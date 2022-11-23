@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppSelector } from '../../hooks/redux';
-import { IUser } from '../../models/models';
+import { useAppSelector } from '../hooks/redux';
+import { IUser } from '../models/models';
 import Card from './Card';
 
 interface ICard {

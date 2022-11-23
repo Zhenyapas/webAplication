@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { useAppDispatch, useAppSelector } from './hooks/redux';
-import WorkList from './Pages/WorkList/WorkList';
+import WorkList from './Pages/WorkList';
 
 import { fetchUsers } from './Store/actions/userActions';
 

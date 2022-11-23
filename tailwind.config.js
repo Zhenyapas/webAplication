@@ -18,6 +18,7 @@ module.exports = {
         'roboto': "'Roboto', sans-serif",
         'proxima':"'ProximaNova', sans-serif",
         'proximaThin':"'ProximaNovaThin', sans-serif",
+        'proximaLight':"'ProximaNovaLigt', sans-serif",
       },
       colors: {
         primary: '#3A4562',

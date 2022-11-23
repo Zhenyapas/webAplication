@@ -33,3 +33,6 @@ export interface ICard {
     key:string
 }
   
+export interface Id {
+    id: string
+}
