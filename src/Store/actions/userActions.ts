@@ -1,8 +1,9 @@
+
 import { userSlice } from './../slices/userSlice';
 import { AppDispatch } from "../index";
 import axios from "axios";
 import { getUsers} from "../../axios/axios"
-import { IUser, ServerResponse } from "../../models/models";
+import { IUser} from "../../models/models";
 
 
 
@@ -12,7 +13,6 @@ export const fetchUsers = () => {
         try {
            dispatch(userSlice.actions.fetching()); 
            const response = await  axios.request<IUser[]>(getUsers);
-           console.log(response)
            dispatch(userSlice.actions.fetchSuccess(response.data));
           
         }
@@ -32,3 +32,16 @@ export const unfolowUser = (id:string) => {
         dispatch(userSlice.actions.folowUser(id))
     }
 }
+
+export const applyNow = (id:string) => {
+    return (dispatch:AppDispatch) => {
+        dispatch(userSlice.actions.applyNow(id))
+    }
+}
+
+export const setCurrentPage = (page:any) => {
+    return (dispatch:AppDispatch) => {
+        dispatch(userSlice.actions.setCurrentPage(page))
+    }
+}
+

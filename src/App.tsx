@@ -1,6 +1,10 @@
 import React from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
+import Error from './components/Error';
+import Loading from './components/Loading';
 import { useAppDispatch, useAppSelector } from './hooks/redux';
+import JobDetails from './Pages/JobDetails';
 import WorkList from './Pages/WorkList';
 
 import { fetchUsers } from './Store/actions/userActions';
@@ -15,25 +19,33 @@ function App() {
 
   const dispatch = useAppDispatch();
 
-  const {loading,users} = useAppSelector(state => state.jobs);
+  const {loading,currentPage,error} = useAppSelector(state => state.jobs);
 
-
+  const navigate = useNavigate();
 
   React.useEffect(() => {
      dispatch(fetchUsers());
+     navigate(`/${currentPage}`)
+
      },[]);
 
-     if(loading) return <div className='bg-yellow-400'>Loading...</div> ;
+
+   if(loading) return <Loading />
+   if(error) return <Error error={error} />
+ 
 
  return (
 
         <div className='App'>
 
-        
-            
-        <WorkList />
+         <Routes>
 
-      
+          <Route path={`/:page`} element={<WorkList />} />
+          <Route path='/jobdetails/:id' element={<JobDetails />} />
+
+         </Routes>
+   
+
 
         </div>
     

@@ -16,8 +16,8 @@ export interface IUser {
 
 }
 export interface ILatLong {
-    lat: number,
-    long: number,
+    lat: string,
+    long: string,
 }
 export interface ServerResponse<T> {
     data: T[], 
@@ -36,3 +36,4 @@ export interface ICard {
 export interface Id {
     id: string
 }
+

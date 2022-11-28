@@ -1,4 +1,16 @@
-export const dateInfo = (str:string):string => {
+import { useEffect, useState } from 'react';
+import { IUser } from '../models/models';
+
+export const useDateInfo = (user:IUser,):string => {
+
+
+
+    const {updatedAt,createdAt} = (user) ? user : {updatedAt:'',createdAt:''};
+
+    const date = (user) ? (updatedAt) ? updatedAt : createdAt : '';
+    
+
+    const count = (str:string) => {
   
     const date = new Date(str);
     const today = new Date();
@@ -13,5 +25,20 @@ export const dateInfo = (str:string):string => {
     : (months>0) ? `posted ${months} ${(months>1) ? 'months' : 'months'} ago.` :
     (days>0) ? `posted ${days} ${(days>1) ? 'days' : 'day' } ago.` : 
     (hours>0) ? `posted ${hours} ago` : (minutes>0) ? `posted ${minutes} ago.` : `...recently`;
+    }
+
+    
+    
+    const [status, setStatus] = useState('Loading...');
+
+
+    useEffect(() => {
+
+        (user) && setStatus(count(date));
+
+    } ,[user])
+    
+
+    return status;
   
 }

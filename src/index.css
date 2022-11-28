@@ -50,4 +50,73 @@
   .pined {
     @apply w-[16px] fill-[#70778B] relative bottom-[120px] right-[40px] hover:cursor-pointer ;
   }
+
+
+  .btnContainer {
+    @apply flex justify-center sm:justify-start items-center;
+  }
+  .btnBlock{
+    @apply flex justify-center items-center font-proximaLight min-w-[122px] h-[52px];
+  }
+  .btnEmployment{
+    @apply flex justify-center items-center font-proxima font-bold min-w-[122px] h-[52px]  border-[1px] rounded-[8px] text-xs mr-4;
+  }
+
+
+
+  .paginator_item {
+    @apply w-[24px] h-[100%] cursor-pointer hover:text-[#55699E]/70 font-proxima text-[#38415D9A]/60 flex justify-center items-center ;
+  }
+  .paginator_item_active {
+
+    @apply w-[24px] h-[100%] cursor-pointer font-proxima  text-[#55699E] flex justify-center items-center border-b-[1px] border-[#55699E] ;
+
+  }
+
+  .content-wrapper{
+    width: 100%;
+    max-width: 500px;
+    min-height: 600px;
+    background-color: gray;
+    margin: 0 auto;
+    padding: 15px;
+  }
+  
+  
+    .slider-title{
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .slider-container{
+      overflow: hidden;
+      margin-right: -15px;
+      margin-left: -15px;}
+
+      .slider-wrapper{
+        display: block;
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        margin-bottom: -20px;
+        padding-bottom: 30px;
+        padding-left: 15px;  }
+
+        .slider-item{
+          justify-content: center;
+          align-items: center;
+          width: 179px;
+          height: 116px;
+          border-radius: 16px;
+          display: inline-flex;
+          border-radius: 5px;
+          overflow: hidden;
+          margin-right: 15px;
+          background-color: pink;
+        }
+         .slider-item :last-child{
+            margin-right: 0px;
+          }  
 }

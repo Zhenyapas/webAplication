@@ -1,39 +1,44 @@
 import {ReactComponent as Pined} from '../../src/img/pined.svg';
 import {ReactComponent as NotPined} from '../../src/img/NotPined.svg';
-import {useEffect, useState} from 'react';
+import { useState} from 'react';
 import { folowUser, unfolowUser } from '../Store/actions/userActions';
-import { ICard } from '../models/models';
+import { IUser } from '../models/models';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import {ReactComponent as Star} from '../img/star.svg';
+import {ReactComponent as StarPined} from '../img/StarPined.svg';
 
 interface IPined {
-  id: 'string'
+  user:IUser,
+  icon?:string,
+  className?:string
 }
 
-const ButtonPined = ({user}:ICard) => {
+const ButtonPined = ({user,icon,className}:IPined) => {
 
 
     const{pined} = useAppSelector((state) => state.jobs);
     const dispatch = useAppDispatch();
 
-    console.log(pined);
-    
-    console.log(user.id);
+
 
     const [isActive,setActive] = useState(pined.includes(user.id));
-    console.log(isActive);
+
     const toggle = () => {
       
       (isActive) ? dispatch(unfolowUser(user.id)) : dispatch(folowUser(user.id));  
        setActive(!isActive);
 
     }
-     useEffect(() => console.log(isActive),[isActive]);
+
+
+
+
    
     return (
 
-     <div className='' onClick={toggle}>
+     <div className={className} onClick={toggle}>
 
-       {(isActive) ? <Pined className='none lg:pined ' /> : <NotPined className='none lg:pined ' />}
+       {(isActive) ? <Pined className=' lg:pined ' /> : <NotPined className=' lg:pined ' />}
 
      </div>
 

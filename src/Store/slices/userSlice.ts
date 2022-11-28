@@ -1,5 +1,6 @@
 import { createSlice,PayloadAction } from '@reduxjs/toolkit';
-import { Id, IUser, ServerResponse } from '../../models/models';
+import {  IUser, } from '../../models/models';
+
 
 
 export interface userData {
@@ -8,6 +9,8 @@ export interface userData {
     error: string,
     users: IUser[],
     pined: string[],
+    applyList:string[],
+    currentPage:string| number,
 
 
 }
@@ -16,7 +19,10 @@ const initialState: userData = {
     loading:false,
     error: '',
     users:[],
-    pined:['635ee6d3ece4a5643d58f4bd','635ee6d374cb23dcaf624aeb']
+    pined:['635ee6d3ece4a5643d58f4bd','635ee6d374cb23dcaf624aeb'],
+    applyList:[],
+    currentPage:'1',
+
 
 }
 
@@ -54,6 +60,16 @@ export const userSlice = createSlice({
         const index = state.pined.findIndex(e => e === action.payload);
         state.pined = state.pined.filter((e:string):boolean => e === state.pined[index]);
 
+    },
+    applyNow(state,action:PayloadAction<string>){
+
+        const index = state.pined.findIndex(e => e === action.payload);
+        state.applyList = state.pined.filter((e:string):boolean => e === state.applyList[index]);
+    },
+    setCurrentPage(state,action:PayloadAction<string>){
+
+        state.currentPage = action.payload
+    
     }
     
     }

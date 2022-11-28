@@ -1,163 +1,190 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import Header from '../components/Header';
-import axios from 'axios';
-import {ReactComponent as Marker} from '../img/marker.svg'
-import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { fetchUsers } from '../Store/actions/userActions';
-  const token = 'wm3gg940gy0xek1ld98uaizhz83c6rh2sir9f9fu';
+import { useAppSelector } from '../hooks/redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDateInfo } from '../hooks/useDateInfo';
+import { useSalaryParse } from '../hooks/useSalaryParse';
+import Contacts from '../components/Contacts';
+import DescriptionBlock from '../components/DescriptionBlock';
+import TitleLine from '../components/TitleLine';
+import Button1 from '../components/Button1';
+import Carousel from '../components/Carousel';
+import ButtonIcon from '../components/ButtonIcon';
+import Loading from '../components/Loading';
 
- 
-  const googleMapkey='AIzaSyAQ_EbCAnxy2fLyqH7UH6Ixjdz0TRrkEQ8&map_id=13b0be2ff57fdaaf';
 
 
-
-
-
-  const options = {
-  method: 'GET',
-  url: 'https://api.json-generator.com/templates/ZM1r0eic3XEy/data',
-  headers: { Authorization: ` Bearer ${token} `}
-  };
-
-  async function getUser(func:Function) {
-    try {
-      const response = await axios.request(options);
-      
-      if (!(response.status === 200)) {
-        throw new Error("Данные некорректны");
-      }
-      func(response.data[0].description);
-
-    } catch (error) {
-      console.error(error);
-      func(false)
-  
-    }
-  }
-
+  const x=50.48260972276553;
+  const y=30.4782172456747;
 
 
 
 function JobDetails() {
 
-  const [words,setWords] = React.useState('');
-  const dispatch = useAppDispatch();
 
-  const {users,loading} = useAppSelector(state => state.jobs);
+    const {users,loading} = useAppSelector(state => state.jobs);
+
+    
+
+    useEffect(() => window.scrollTo(0,0));
 
   
 
-  React.useEffect(() => {
-    setWords(users[0]?.description )
-  },[])
+    const navigate = useNavigate();
+
+  
+    
+
+    const params = useParams<'id'>()
+
+    const paramsById = users.findIndex((e) =>  'id' + e.id == params.id);
+
+    const user = users[paramsById];
+
+
+       
+    const page = (paramsById <= 5) ? 1 : Math.ceil(paramsById/ 5);
+    const clickHandler = () => navigate(`/${page}`);
+
+    
+
+    const whenLoaded = useDateInfo(user);
+    const salary = useSalaryParse(user);
 
  
 
-   const content = (words) ? words.split(/\n/).filter( (e:string) => e &&  e !== '  ') : false;
+    const content = (user?.description) ? user.description.split(/\n/).filter( (e:string) => e &&  e !== '  ') : false;
 
-   
-
-   const [text1,title1,text2,title2,text3] = (content) ? content : ['','','','',''];
+    const [text1,title1,text2,title2,text3] = (content) ? content : ['','','','',''];
   
-   console.log(content);
-   
-   
-
-  return (
+    if(loading) return <Loading />;
+    
 
 
-    <div  className='container gap-x-[50px] sm:flex sm:flex-row sm:flex-wrap  px-4  mt-[1.5rem] lg:px-12 xl:px-0  '>
+    return (
 
-      <div className='max-w-[700px] grow '>
+  
+        <div  className='container gap-x-[50px] sm:flex sm:flex-row sm:flex-wrap  px-4  mt-[1.5rem] lg:px-12 xl:px-0  '>
 
-        <Header  />
+          <div className='max-w-[700px] grow  '>
+
+            <Header title={'Job Details'} user={user} />
 
 
-        <div className='max-width-[383px] mt-[34px] md:max-width-[500px]'>
-      
-          <div className='font-proxima max-width-[363px] text-h2 text-primary'>
             
-          </div>
-
-          <div className='flex justify-between items-center '>
-
-
-                <div className=' text-3 font-thin opacity-60 text-secondary'>
-                  Posted 2 days ago
-                </div>
-
-                <div className='flex flex-col items-end mt-1.25 '>
-                    <div className=' text-4.5 -tracking-[0.56px] text-secondary '>Brutto, per year</div>
-                    <div className='font-proxima text-8 -tracking-[0.63px] leading-6  text-primary font-[700]'>€ 54 000—60 000</div>
-                </div>
-
-
-          </div>
-
-
-          <div className=' text-lg -tracking-[0.63px] mt-[14px] text-secondary font-[400]'>
-            {text1}
-          </div>
-
-
-          <div className='font-proxima text-2xl  -tracking-[0.63px] font-[700] mt-[43px] text-primary'>{title1}</div>
-
-          <div className='text-lg -tracking-[0.63px] mt-[14px] text-secondary font-[400]'>
-            {text2}
-          </div>
-
-
-          <div className='font-proxima text-2xl -tracking-[0.63px] font-[700] mt-[43px] text-primary'>{title2}</div>
-
-          <ul className='list mt-4'>
-         { text3.split('.').filter(el => el).map(elem => <li className='list'>{elem}</li>)} 
-          </ul>
-
-
-
-        </div>  
-
-
-        
-
-
-
-      </div>
-
-
-      <div className=' pc:min-width-[402px]  grow  flex '>
-        <div className='2xl:max-w-[85px] 2xl:grow'></div>
-        <div className=''> 
-          <div className='h-[220px] w-[372px]  pc:w-[402px] bg-[#2A3047] rounded-tl-[8px] rounded-tr-[8px] overflow-hidden '>
-            <div className='hidden pc:block relative right-[90px]  bottom-[20px] z-10  rounded-[50%] w-[273px] h-[273px] bg-[#202336] '></div> 
-
-           <div className='mt-[31px] ml-[62px]  pc:pcMap'>
-            <div className='  font-proxima text-[#f0ede7] text-base  '>
-              Departament name. 
+            <div className='hidden lg:flex justify-center sm:justify-start items-center mt-10 mb-10 '>
+                <Button1 className='' id={user?.id}>Apply now</Button1>
             </div>
-            <div className=' font-proxima text-base -mt-[4px] text-[#f0ede7]'>University Hospital Giessen.</div>
-            <div className='flex items-center mt-[17px]'>
-              <Marker className='w-[13px] mr-[8px]' />
-              <div className=' text-base -tracking-[0.5px] font-[400] text-[#E7EAF0] pc:text-[#E8EBF3]  '>AKH Wien, 1090 Wien, Währinger</div>
+
+
+            <div className='max-width-[383px] mt-[34px] md:max-width-[500px]'>
+          
+              <div className='font-proxima max-width-[363px] text-h2 text-primary'>
+                {(user?.title) && user?.title}
+              </div>
+
+              <div className='flex justify-between items-center '>
+
+
+                    <div className=' text-3 font-thin opacity-60 text-secondary'>
+                      {whenLoaded} 
+                    </div>
+
+                    <div className='flex flex-col items-end mt-1.25 '>
+                        <div className=' text-4.5 -tracking-[0.56px] text-secondary '>Brutto, per year</div>
+                        <div className='font-proxima text-8 -tracking-[0.63px] leading-6  text-primary font-[700]'>{salary}</div>
+                    </div>
+
+
+              </div>
+
+
+              <div className=' text-lg -tracking-[0.63px] mt-[14px] text-secondary font-[400]'>
+                {text1}
+              </div>
+
+
+              <div className='font-proxima text-2xl  -tracking-[0.63px] font-[700] mt-[43px] text-primary'>{title1}</div>
+
+              <div className='text-lg -tracking-[0.63px] mt-[14px] text-secondary font-[400]'>
+                {text2}
+              </div>
+
+
+              <div className='font-proxima text-2xl -tracking-[0.63px] font-[700] mt-[43px] text-primary'>{title2}</div>
+
+              <ul className='list mt-4'>
+                {text3.split('.').filter(el => el).map((elem,i) => <li key={'benefit' + i} className='list'>{elem}</li>)} 
+              </ul>
+
+              <div className='flex justify-center sm:justify-start items-center mt-10 mb-10 '>
+                <Button1 className='' id={user?.id}>Apply now</Button1>
+              </div>
+
+
+            <div className='flex flex-col'>
+              {user?.pictures && 
+              <div className='lg:order-last'>
+                <TitleLine className='mb-[25px]'>Attached images</TitleLine>
+                <Carousel pictures={user.pictures} />
+              </div>
+
+              }
+
+              <TitleLine className='mb-[15px]'>Aditional Info</TitleLine>
+
+              { (user?.employment_type) && 
+
+                <>
+                    <div className='text-lg text-[#38415D] opacity-[82%]'>Employment type</div>
+                    <div className='flex justify-start  items-center mt-[10px]  '>
+                      <DescriptionBlock className=' lg:w-[222px] bg-[#0000001F]/[12%] border-[#0000001F]/[12%] text-[#55699E]'>{user?.employment_type}</DescriptionBlock>
+                    </div>
+                </>
+              }
+
+
+              { (user?.benefits) && 
+
+                <>
+                    <div className='text-lg text-[#38415D] opacity-[82%] mt-[22px] '>Benefits</div>
+                    <div className='flex justify-start  items-center mt-[10px] mb-10  '>
+                      <DescriptionBlock className=' lg:w-[222px] bg-[#FFCF00]/[12%] border-[#FFCF00]/[12%] text-[#988B49]'>{user?.benefits}</DescriptionBlock>
+                    </div>
+                </>
+              }
+
             </div>
-            <div className='text-[#f0ede7] text-base font-[400] mt-[3px] -tracking-[0.5px]  '>Gurtel 18-20</div>
-            <div className='font-proximaThin pc:font-roboto text-[#FFFFFFAB] pc:text-[#E8EBF3] text-base font-[400] mt-[6px] -tracking-[0.5px] opacity-[70%] pc:opacity-100'>+43 (01) 40400-12090,</div>
-            <div className='font-proximaThin pc:font-roboto text-[#FFFFFFAB] pc:text-[#E8EBF3] text-base font-[400] -mt-[2px] -tracking-[0.5px] opacity-[70%] pc:opacity-100'>post_akh_diz@akhwien.at</div>
-           </div>
+
+
+            </div>  
+
+
+
+            <TitleLine className='md:hidden mb-[21px]'>Contacts</TitleLine>
+
+
+            <div className='hidden lg:flex xl:relative xl:right-[70px] justify-start lg:max-w-[12] '>
+              <ButtonIcon onClick={clickHandler} className='mb-10 min-w-[223px]' title={'RETURN TO JOB BOARD'} icon={'arrow'} />
+            </div>
+
           </div>
-          <div className='h-[216px] w-[372px] pc:w-[402px] mb-[20px] rounded-bl-[8px] rounded-br-[8px] overflow-hidden'>
-          {/*   <img width="402" src={`https://maps.googleapis.com/maps/api/staticmap?
-            &markers=icon:https://i.ibb.co/34Y5mrk/marker-Large.png%7Clabel:%7C${50.48260972276553}%2C${30.4782172456747}
-            &zoom=10&scale=2&size=${402}x${258}&maptype=roadmap&format=jpg&key=${googleMapkey}`} alt="Location"  />  */}
+
+
+          
+
+          <div className=' pc:min-width-[402px] grow  flex flex-col gap-4  '>
+            <Contacts  user={user} key={user?.id} />
+
+            <div className='flex  justify-start lg:hidden '>
+              <ButtonIcon onClick={clickHandler} className='mb-10 min-w-[223px]' title={'RETURN TO JOB BOARD'} icon={'arrow'} />
+            </div> 
+
           </div>
+
+
         </div>
-      </div>
-       
-      
-        
-         
 
-    </div>
   );
 }
 
