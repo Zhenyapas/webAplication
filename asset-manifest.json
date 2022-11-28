@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/webAplication/static/css/main.60eb53c7.css",
-    "main.js": "/webAplication/static/js/main.51119342.js",
+    "main.css": "/webAplication/static/css/main.ef85e9a3.css",
+    "main.js": "/webAplication/static/js/main.a03d0dc8.js",
     "static/media/ProximaNova-Light.woff": "/webAplication/static/media/ProximaNova-Light.6f5ad2ca80abea2876d4.woff",
     "static/media/ProximaNova-Bold.woff": "/webAplication/static/media/ProximaNova-Bold.7bbe1c8847f08b1633a0.woff",
     "static/media/ProximaNova-Semibold.woff": "/webAplication/static/media/ProximaNova-Semibold.9d060ce65c8a91d38e21.woff",
@@ -10,19 +10,19 @@
     "static/media/ProximaNova-Semibold.woff2": "/webAplication/static/media/ProximaNova-Semibold.54b9eb90d4b941f9371e.woff2",
     "index.html": "/webAplication/index.html",
     "static/media/star.svg": "/webAplication/static/media/star.e244b6df0197267d6eae211e57914634.svg",
-    "static/media/share-3-dott.svg": "/webAplication/static/media/share-3-dott.506cb17d22a77002fde268b9c38789f1.svg",
+    "static/media/share-3-dott.svg": "/webAplication/static/media/share-3-dott.dee88c7f929243b2c62a351d6eff5921.svg",
     "static/media/StarPined.svg": "/webAplication/static/media/StarPined.b8273508e82fe792289c10220c3cc5b3.svg",
     "static/media/NotPined.svg": "/webAplication/static/media/NotPined.e1d8e6330cb3b383a2bbe1a3b4032839.svg",
     "static/media/rate.svg": "/webAplication/static/media/rate.6a1b9746fa353b2a5d06dd34e55a8f19.svg",
     "static/media/marker.svg": "/webAplication/static/media/marker.92fe8aff8094f98fd9a387c411a350b3.svg",
-    "static/media/pined.svg": "/webAplication/static/media/pined.35c5a2a146f19b3ed4ab1224573cd849.svg",
+    "static/media/pined.svg": "/webAplication/static/media/pined.e6801d39638dff0d8aa69b0dded0ae46.svg",
     "static/media/arrow.svg": "/webAplication/static/media/arrow.6b559de97d6d6429a7c2ee4c88ee3613.svg",
     "static/media/arrow2.svg": "/webAplication/static/media/arrow2.29a933ea9c2e7b789fb3baaaa031a961.svg",
-    "main.60eb53c7.css.map": "/webAplication/static/css/main.60eb53c7.css.map",
-    "main.51119342.js.map": "/webAplication/static/js/main.51119342.js.map"
+    "main.ef85e9a3.css.map": "/webAplication/static/css/main.ef85e9a3.css.map",
+    "main.a03d0dc8.js.map": "/webAplication/static/js/main.a03d0dc8.js.map"
   },
   "entrypoints": [
-    "static/css/main.60eb53c7.css",
-    "static/js/main.51119342.js"
+    "static/css/main.ef85e9a3.css",
+    "static/js/main.a03d0dc8.js"
   ]
 }
