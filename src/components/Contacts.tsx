@@ -39,7 +39,7 @@ function Contacts({user}:ICard) {
   return (
 
     <>
-      <div className='2xl:max-w-[85px] 2xl:grow'></div>
+      <div className='2xl:max-w-[85px]'></div>
         <div className=''> 
           <div className='h-[220px] w-[372px]  pc:w-[402px] bg-[#2A3047] rounded-tl-[8px] rounded-tr-[8px] overflow-hidden '>
             <div className='hidden pc:block relative right-[90px]  bottom-[20px] z-10  rounded-[50%] w-[273px] h-[273px] bg-[#202336] '></div> 
