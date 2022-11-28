@@ -64,7 +64,7 @@ function JobDetails() {
     return (
 
   
-        <div  className='container gap-x-[50px] sm:flex sm:flex-col lg:flex-row  px-4  mt-[1.5rem] lg:px-12 xl:px-0  '>
+        <div  className='container gap-x-[50px]  sm:flex sm:flex-col lg:flex-row flex-wrap  px-4  mt-[1.5rem] lg:px-12 xl:px-0  '>
 
           <div className='max-w-[700px] grow  '>
 
@@ -173,7 +173,7 @@ function JobDetails() {
 
           
 
-          <div className=' pc:min-width-[402px] grow flex flex-col gap-4  '>
+          <div className='  pc:min-width-[402px] grow flex flex-col gap-4 xl:items-end '>
             <Contacts  user={user} key={user?.id} />
 
             <div className='flex  justify-start lg:hidden '>

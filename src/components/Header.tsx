@@ -49,11 +49,14 @@ function Header({title,user}:IHeader) {
             
             <div className='flex items-center mt-6 sm:grow sm:justify-end  m:min-width-[300px] sm:relative sm:bottom-[10px]'>
           
+              <div onClick={toggle} className='hover:opacity-70 cursor-pointer flex '>
+                { (isActive) ?  <StarPinned className='w-[19px]   fill-secondary mb-[2px] opacity-90 '/> :
 
-              { (isActive) ? <Star onClick={toggle} className='w-[19px]  fill-secondary mb-[2px] opacity-90  ' />  :
-                              <StarPinned onClick={toggle} className='w-[19px]  fill-secondary mb-[2px] opacity-90 '/>
-              }
-              <span className={' -tracking-[0.5px] text-2 text-secondary  ml-3 md:font-roboto'} >Save to my list</span>
+                                <Star className='w-[19px]  fill-secondary mb-[2px] opacity-90  ' /> 
+                                
+                }
+                <span className={' -tracking-[0.5px] text-2 text-secondary   ml-3 md:font-roboto'} >Save to my list</span>
+              </div>
 
               <Share className='w-[19px] fill-secondary mt-[1px] ml-9 opacity-90'/>
               <span className='-tracking-[0.5px] leading-5 text-2  text-secondary  ml-3'>Share</span>
