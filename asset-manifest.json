@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/webAplication/static/css/main.b381b9a7.css",
-    "main.js": "/webAplication/static/js/main.ccc29b23.js",
+    "main.js": "/webAplication/static/js/main.6b525beb.js",
     "static/media/ProximaNova-Light.woff": "/webAplication/static/media/ProximaNova-Light.6f5ad2ca80abea2876d4.woff",
     "static/media/ProximaNova-Bold.woff": "/webAplication/static/media/ProximaNova-Bold.7bbe1c8847f08b1633a0.woff",
     "static/media/ProximaNova-Semibold.woff": "/webAplication/static/media/ProximaNova-Semibold.9d060ce65c8a91d38e21.woff",
@@ -19,10 +19,10 @@
     "static/media/arrow.svg": "/webAplication/static/media/arrow.6b559de97d6d6429a7c2ee4c88ee3613.svg",
     "static/media/arrow2.svg": "/webAplication/static/media/arrow2.29a933ea9c2e7b789fb3baaaa031a961.svg",
     "main.b381b9a7.css.map": "/webAplication/static/css/main.b381b9a7.css.map",
-    "main.ccc29b23.js.map": "/webAplication/static/js/main.ccc29b23.js.map"
+    "main.6b525beb.js.map": "/webAplication/static/js/main.6b525beb.js.map"
   },
   "entrypoints": [
     "static/css/main.b381b9a7.css",
-    "static/js/main.ccc29b23.js"
+    "static/js/main.6b525beb.js"
   ]
 }
