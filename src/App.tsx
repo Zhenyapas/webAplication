@@ -29,7 +29,7 @@ function App() {
 
   React.useEffect(() => {
      dispatch(fetchUsers());
-     if(path.pathname === '/') navigate(`/${currentPage}`);
+     if(path.key === 'default') navigate(`/${currentPage}`);
 
      },[]);
 
