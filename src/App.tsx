@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
 import Error from './components/Error';
 import Loading from './components/Loading';
@@ -22,10 +22,14 @@ function App() {
   const {loading,currentPage,error} = useAppSelector(state => state.jobs);
 
   const navigate = useNavigate();
+  const path = useLocation();
+
+  
+
 
   React.useEffect(() => {
      dispatch(fetchUsers());
-     navigate(`/${currentPage}`)
+     if(path.pathname === '/') navigate(`/${currentPage}`);
 
      },[]);
 

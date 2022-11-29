@@ -1,34 +1,52 @@
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import {ReactComponent as Star} from '../img/star.svg';
 import {ReactComponent as StarPinned} from '../img/StarPined.svg';
 import {ReactComponent as Share} from '../img/share-3-dott.svg';
 import {  IUser } from '../models/models';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { folowUser, unfolowUser } from '../Store/actions/userActions';
+import Loading from './Loading';
+
 
 interface IHeader {
   title:string,
   user:IUser
 }
 
-function Header({title,user}:IHeader) {
+const useHeaderProps = (user:IUser) => {
 
   const{pined} = useAppSelector((state) => state.jobs);
   const dispatch = useAppDispatch();
+  
+  const [loading, setLoading] = useState(true); 
+
+  useEffect(() => (user) && setLoading(false),[user]);
+
+  return {loading, pined, dispatch}
+}
+
+function Header({title,user}:IHeader) {
 
 
+  const {loading,pined,dispatch} = useHeaderProps(user);
 
-  const [isActive,setActive] = useState(pined.includes(user.id));
+
+ 
+  const [isActive,setActive] = useState((user) ? pined.includes(user.id) : false);
+
+  if(loading) return <Loading />
 
   const toggle = () => {
     
     (isActive) ? dispatch(unfolowUser(user.id)) : dispatch(folowUser(user.id));  
      setActive(!isActive);
+     console.log(pined);
 
   }
 
 
 
+  if(loading) return <Loading />
 
   return (
 

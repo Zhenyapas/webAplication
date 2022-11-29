@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PABLIC_URL}>
     
     <Provider store={store}>
       <App />
