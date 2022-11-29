@@ -58,13 +58,13 @@ export const userSlice = createSlice({
     unfolowUser(state,action:PayloadAction<string>){
 
         const index = state.pined.findIndex(e => e === action.payload);
-        state.pined = state.pined.filter((e:string):boolean => e === state.pined[index]);
+        state.pined = state.pined.filter((e:string):boolean => e !== state.pined[index]);
 
     },
     applyNow(state,action:PayloadAction<string>){
 
         const index = state.pined.findIndex(e => e === action.payload);
-        state.applyList = state.pined.filter((e:string):boolean => e === state.applyList[index]);
+        state.applyList = state.pined.filter((e:string):boolean => e !== state.applyList[index]);
     },
     setCurrentPage(state,action:PayloadAction<string>){
 

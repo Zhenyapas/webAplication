@@ -29,6 +29,7 @@ function Header({title,user}:IHeader) {
 
 
   const {loading,pined,dispatch} = useHeaderProps(user);
+  console.log(pined);
 
 
  
